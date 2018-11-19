@@ -126,11 +126,10 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
 console.log("AAAAA")
 
-  controller.hears('hello','message_received',function(bot, message) {
-    // do something
-    console.log("Hears the msg")
-    bot.reply(message, 'Hello human')
-
+controller.hears( ['hello', 'hi', 'greetings'],
+    ['direct_mention', 'mention', 'direct_message', 'ambient'],
+     function (bot, message) {
+    bot.reply(message, 'Hello!');
 });
  
 }
