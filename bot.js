@@ -124,10 +124,13 @@ if (!process.env.clientId || !process.env.clientSecret) {
   // Load in some helpers that make running Botkit on Glitch.com better
   require(__dirname + '/components/plugin_glitch.js')(controller);
 
+console.log("AAAAA")
 
   controller.hears('hello','message_received',function(bot, message) {
-    // do something!
+    // do something
+    console.log("Hears the msg")
     bot.reply(message, 'Hello human')
+
 });
  
 }
