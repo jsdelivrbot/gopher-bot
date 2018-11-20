@@ -120,9 +120,35 @@ controller.hears( ['hello', 'hi', 'greetings'],
                 console.log(response)
                 bot.reply(message, `Text: ${message.text}, channel ${data.channel},
                  user ${data.user}`)
-            })
 
-             
+
+                 bot.reply(message, {
+                    attachments:[
+                        {
+                            title: 'Push to site',
+                            callback_id: '123',
+                            attachment_type: 'default',
+                            actions: [
+                                {
+                                    "name":"yes",
+                                    "text": "Yes, please",
+                                    "value": "da",
+                                    "type": "button",
+                                },
+                                {
+                                    "name":"no",
+                                    "text": "No dont",
+                                    "value": "nyet",
+                                    "type": "button",
+                                }
+                            ]
+                        }
+                    ]
+                });
+
+
+                 
+            })             
          })
 
         
