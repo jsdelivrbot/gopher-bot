@@ -110,6 +110,7 @@ controller.hears( ['hello', 'hi', 'greetings'],
     ['direct_mention', 'mention', 'direct_message', 'ambient'],
      function (bot, message) {
     bot.reply(message, 'Hello!');
+    console.log(controller.slackbot.token)
 });
  
 
