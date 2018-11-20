@@ -111,7 +111,7 @@ controller.hears( ['hello', 'hi', 'greetings'],
      function (bot, message) {
          console.log(message)
          bot.api.channels.info({channel: message.channel}, function(error, response){
-             console.log(res)
+             console.log(response)
          })
 
     });
