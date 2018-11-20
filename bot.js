@@ -110,9 +110,7 @@ controller.hears( ['hello', 'hi', 'greetings'],
     ['direct_mention', 'mention', 'direct_message', 'ambient'],
      function (bot, message) {
          console.log(message)
-         bot.api.channels.info({channel: message.channel}, function(error, response){
-            bot.reply(message, response);
-         })
+         bot.reply(message, response);
         });
  
 
