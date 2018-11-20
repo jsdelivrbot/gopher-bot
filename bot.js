@@ -109,9 +109,10 @@ var webserver = require(__dirname + '/components/express_webserver.js')(controll
 controller.hears( ['hello', 'hi', 'greetings'],
     ['direct_mention', 'mention', 'direct_message', 'ambient'],
      function (bot, message) {
-    bot.reply(message, 'Hello!');
-    console.log(controller.slackbot.token)
-});
+         bot.api.channels.info({channel: message.channel}, function(error, response){
+            bot.reply(message, response);
+         })
+        });
  
 
 
