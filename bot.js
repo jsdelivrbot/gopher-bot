@@ -59,6 +59,14 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
 var Botkit = require('botkit');
 var debug = require('debug')('botkit:main');
+var mongoose = require('mongoose');
+var mongoDB = process.env.MONGO_URI;
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+var Message = require('../models/messageModel');
+
 
 var bot_options = {
     clientId: process.env.clientId,
@@ -75,6 +83,7 @@ var bot_options = {
 if (process.env.MONGO_URI) {
     var mongoStorage = require('botkit-storage-mongo')({mongoUri: process.env.MONGO_URI});
     bot_options.storage = mongoStorage;
+    
 } else {
     bot_options.json_file_store = __dirname + '/.data/db/'; // store user data in a simple JSON format
 }
@@ -106,6 +115,7 @@ var webserver = require(__dirname + '/components/express_webserver.js')(controll
   require(__dirname + '/components/plugin_glitch.js')(controller);
 
 
+
 controller.hears( ['hello', 'hi', 'greetings'],
     ['direct_mention', 'mention', 'direct_message', 'ambient'],
      function (bot, message) {
@@ -118,9 +128,22 @@ controller.hears( ['hello', 'hi', 'greetings'],
              bot.api.users.info({user: message.user}, function(error, response){
                 data.user = response.user.real_name
                 console.log(response)
+
                 bot.reply(message, `Text: ${message.text}, channel ${data.channel},
                  user ${data.user}`)
-
+                 var msg = new Message(
+                    {
+                        user: data.user,
+                        message: message.text,
+                        channel: data.channel,
+                        tags: ["Test", "not real"],
+                        time_send: "12 oclock"
+                    });
+                    
+                    msg.save(function (err) {
+                        if (err) {console.log(err)} 
+                        console.log("pass")
+                    });
 
                  bot.reply(message, {
                     attachments:[
