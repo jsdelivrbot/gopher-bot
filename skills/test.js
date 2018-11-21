@@ -1,4 +1,4 @@
-var Message = require('./models/messageModel');
+var Message = require('../models/messageModel');
 
 module.exports = function(controller) {
 
