@@ -65,7 +65,7 @@ mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-var Message = require('/models/messageModel');
+var Message = require('./models/messageModel');
 
 
 var bot_options = {
