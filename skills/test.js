@@ -1,4 +1,7 @@
+var Message = require('../models/messageModel');
+
 module.exports = function(controller) {
+
     controller.hears( ['hello', 'hi', 'greetings'],
     ['direct_mention', 'mention', 'direct_message', 'ambient'],
      function (bot, message) {
