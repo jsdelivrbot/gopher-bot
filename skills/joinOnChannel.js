@@ -16,7 +16,7 @@ module.exports = function (controller) {
                     {
                         channelId: response.channel.id,
                         channelName: response.channel.name,
-                        tags: [response.channel.purpose]
+                        tags: [response.channel.purpose.value]
                     });
                     channelInfo.save(function (err) {
                         if (err) {console.log(err)} 

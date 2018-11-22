@@ -8,7 +8,7 @@ module.exports = function(controller) {
          let data = {}
          console.log(message)
          bot.api.channels.info({channel: message.channel}, function(error, response){
-             console.log(response.channel)
+           //  console.log(response.channel)
              data.channel = response.channel.name
 
              bot.api.users.info({user: message.user}, function(error, response){
