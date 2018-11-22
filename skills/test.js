@@ -63,6 +63,9 @@ module.exports = function(controller) {
     });
 
     controller.on('interactive_message_callback', function(bot, message){
+
+        console.log(message)
+
         if (message.actions.name === 'yes'){
             bot.replyInteractive(message,{
                 title: 'Sent',
