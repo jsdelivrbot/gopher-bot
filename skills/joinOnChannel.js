@@ -7,7 +7,7 @@ module.exports = function (controller) {
         function (bot, message) {
             let data = {}
             console.log(message)
-            bot.api.channels.info(function (error, response) {
+            bot.api.channels.info({channel: message.channel}, function (error, response) {
                 console.log(response.channel.id)
                 console.log(response.channel.name)
                 console.log(response.channel.purpose)
