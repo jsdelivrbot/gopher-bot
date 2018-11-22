@@ -15,8 +15,8 @@ module.exports = function(controller) {
                 data.user = response.user.real_name
                 console.log(response)
 
-                bot.reply(message, `Text: ${message.text}, channel ${data.channel},
-                 user ${data.user}`)
+                // bot.reply(message, `Text: ${message.text}, channel ${data.channel},
+                //  user ${data.user}`)
                  var msg = new Message(
                     {
                         user: data.user,
@@ -26,15 +26,16 @@ module.exports = function(controller) {
                         time_send: "12 oclock"
                     });
                     
-                    msg.save(function (err) {
-                        if (err) {console.log(err)} 
-                        console.log("pass")
-                    });
+                //     msg.save(function (err) {
+                //         if (err) {console.log(err)} 
+                //         console.log("pass")
+                //     });
 
                  bot.reply(message, {
                     attachments:[
                         {
-                            title: 'Push to site',
+                            title: 'Would you like to push this as an event?',
+                            text: `Text: ${message.text}, channel ${data.channel}, user ${data.user}`,
                             callback_id: '123',
                             attachment_type: 'default',
                             actions: [
@@ -60,4 +61,22 @@ module.exports = function(controller) {
             })             
          })
     });
+
+    controller.on('interactive_message_callback', function(bot, message){
+        if (message.actions.name === 'yes'){
+            bot.replyInteractive(message,{
+                title: 'Sent',
+                text: 'See it on the website'
+            }, function(err){
+                
+            } )
+        } else {
+            bot.replyInteractive(message,{
+                title: 'Declined',
+                text: 'Not on website'
+            }, function(err){
+                
+            } )
+        }
+    })
 }
