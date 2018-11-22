@@ -66,7 +66,7 @@ module.exports = function(controller) {
 
         console.log(message)
 
-        if (message.actions.name === 'yes'){
+        if (message.actions[0].name === 'yes'){
             bot.replyInteractive(message,{
                 title: 'Sent',
                 text: 'See it on the website'
