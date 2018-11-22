@@ -12,12 +12,15 @@ module.exports = function (controller) {
                 console.log(response.channel.name)
                 console.log(response.channel.purpose)
 
-
                 var channelInfo = new ChannelInfo(
                     {
                         channelId: response.channel.id,
                         channelName: response.channel.name,
                         channelPurpose: response.channel.purpose
+                    });
+                    channelInfo.save(function (err) {
+                        if (err) {console.log(err)} 
+                        console.log("channel info saved")
                     });
             })
         });
