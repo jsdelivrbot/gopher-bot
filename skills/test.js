@@ -74,7 +74,7 @@ module.exports = function (controller) {
         console.log(message)
 
         if (message.actions[0].name === 'yes') {
-            let msg = new Message(msg)
+            let msg = new Message(msgMap.get(message.callback_id))
             msg.save((function (err) {
                 if (err) { console.log(err) }
                 console.log("pass")
