@@ -59,13 +59,13 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
 var Botkit = require('botkit');
 var debug = require('debug')('botkit:main');
+
 var mongoose = require('mongoose');
 var mongoDB = process.env.MONGO_URI;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-var Message = require('./models/messageModel');
 
 
 var bot_options = {
@@ -110,9 +110,6 @@ var webserver = require(__dirname + '/components/express_webserver.js')(controll
 
   // Send an onboarding message when a new team joins
   require(__dirname + '/components/onboarding.js')(controller);
-
-  // Load in some helpers that make running Botkit on Glitch.com better
-  require(__dirname + '/components/plugin_glitch.js')(controller);
 
   var normalizedPath = require("path").join(__dirname, "skills");
   require("fs").readdirSync(normalizedPath).forEach(function(file) {
