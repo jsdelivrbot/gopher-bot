@@ -86,6 +86,7 @@ module.exports = function (controller) {
 
             })
         } else {
+            msgMap.delete(message.callback_id)
             bot.replyInteractive(message, {
                 title: 'Declined',
                 text: 'Not on website'
