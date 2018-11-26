@@ -13,10 +13,10 @@ module.exports = function (controller) {
                 
                 function splitString() {
 
-                var tags = response.channel.purpose.toString().split(" ")
+                var tags = response.channel.purpose.value.split(" ")
                
-                console.log(response.channel.purpose)
-                console.log('WTF' + Object.values(tags))
+                console.log(response.channel.purpose.value)
+                console.log('WTF' + tags)
                 
                 var channelInfo = new ChannelInfo(
                     {
