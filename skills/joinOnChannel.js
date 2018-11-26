@@ -14,10 +14,11 @@ module.exports = function (controller) {
                 function splitString() {
 
                     var tags = response.channel.purpose.value
+                    
+                    var tagCutter = "tags:"
+                    tags = tags.substring(tags.indexOf(tagCutter) + tagCutter.length)
 
-                    tags = tags.substring(tags.indexOf("tags:") + 1)
-
-                    tags = response.channel.purpose.value.split(", ")
+                    tags = tags.split(", ")
 
                     console.log(response.channel.purpose.value)
                     console.log('WTF' + tags)
