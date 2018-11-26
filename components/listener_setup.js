@@ -7,9 +7,6 @@ module.exports = function (controller, channel) {
     controller.hears(channel.tags, channel.channelId,
         function (bot, message) {
             let data = {}
-            console.log(message)
-            console.log(channel.tags)
-            console.log(channel.channelName)
 
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name

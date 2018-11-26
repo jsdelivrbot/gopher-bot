@@ -14,7 +14,7 @@ module.exports = function (controller) {
                 function splitString() {
 
                     var tags = response.channel.purpose.value
-                    
+
                     var tagCutter = "tags:"
                     tags = tags.substring(tags.indexOf(tagCutter) + tagCutter.length)
 
@@ -29,6 +29,9 @@ module.exports = function (controller) {
                             channelName: response.channel.name,
                             tags: tags
                         });
+
+                    require('../components/listener_setup.js')(controller, channelInfo)
+
                     channelInfo.save(function (err) {
                         if (err) { console.log(err) }
                         console.log("channel info saved")
