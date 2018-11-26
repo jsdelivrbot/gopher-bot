@@ -1,6 +1,5 @@
 var Message = require('../models/messageModel');
 
-<<<<<<< HEAD
 module.exports = function (controller) {
 
     let msgMap = new Map()
@@ -19,27 +18,6 @@ module.exports = function (controller) {
                     console.log(response)
 
                     let msg = {
-=======
-module.exports = function(controller) {
-
-    controller.hears( ['hello', 'hi', 'greetings'],
-    ['direct_mention', 'mention', 'direct_message', 'ambient'],
-     function (bot, message) {
-         let data = {}
-         console.log(message)
-         bot.api.channels.info({channel: message.channel}, function(error, response){
-           //  console.log(response.channel)
-             data.channel = response.channel.name
-
-             bot.api.users.info({user: message.user}, function(error, response){
-                data.user = response.user.real_name
-                //console.log(response)
-
-                bot.reply(message, `Text: ${message.text}, channel ${data.channel},
-                 user ${data.user}`)
-                 var msg = new Message(
-                    {
->>>>>>> master
                         user: data.user,
                         message: message.text,
                         channel: data.channel,
