@@ -1,5 +1,5 @@
 module.exports = function (controller) {
-    controller.on('ambient', function(bot, message){
+    controller.on('reaction_added', function(bot, message){
         console.log('reaction added?')
         console.log(message)
     })
