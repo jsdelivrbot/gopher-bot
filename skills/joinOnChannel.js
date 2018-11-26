@@ -12,7 +12,8 @@ module.exports = function (controller) {
                 splitString()
                 
                 function splitString() {
-                tags = response.channel.purpose.split(" ")
+                    
+                var tags = response.channel.purpose.toString().split(" ")
                 console.log('WTF' + tags)
                 
                 var channelInfo = new ChannelInfo(
