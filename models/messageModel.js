@@ -8,7 +8,8 @@ var messageSchema = new Schema(
     message: String,
     channel: String,
     tags: [String],
-    time_send: String
+    time_send: String,
+    link: String
   }, {
     timestamps: true
   }

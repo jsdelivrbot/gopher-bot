@@ -8,6 +8,7 @@ module.exports = function (controller, channel) {
         function (bot, message) {
             let data = {}
 
+            console.log(message)
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name
                     console.log(response)
