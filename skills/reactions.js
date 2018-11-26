@@ -4,11 +4,11 @@ module.exports = function (controller) {
         console.log(message)
 
         console.log(message.event.item.channel)
-        console.log(message.event.item.timestamp)
+        console.log(message.event.item.ts)
 
         bot.api.reactions.get({
             channel: message.event.item.channel,
-            timestamp: message.event.item.timestamp
+            timestamp: message.event.item.ts
         }, function(error, response){
             console.log('api req here')
             console.log(error)
