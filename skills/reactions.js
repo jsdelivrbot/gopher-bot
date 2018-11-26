@@ -12,9 +12,13 @@ module.exports = function (controller) {
         }, function(error, response){
             console.log('api req here')
             console.log(response)
+            let reactions_count = 0
             response.message.reactions.forEach(element => {
                 console.log(element)
+                reactions_count += element.count
             });
+
+            console.log(reactions_count)
 
         }
         )
