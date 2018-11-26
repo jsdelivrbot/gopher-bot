@@ -8,15 +8,13 @@ module.exports = function (controller) {
             let data = {}
             console.log(message)
             bot.api.channels.info({channel: message.channel}, function (error, response) {
-                var tags
+                
                 splitString()
                 
                 function splitString() {
                 tags = response.channel.purpose.split(" ")
                 console.log('WTF' + tags)
-
-                }
-
+                
                 var channelInfo = new ChannelInfo(
                     {
                         channelId: response.channel.id,
@@ -27,6 +25,9 @@ module.exports = function (controller) {
                         if (err) {console.log(err)} 
                         console.log("channel info saved")
                     });
+                }
+
+               
             })
         });
 }
