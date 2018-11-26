@@ -6,11 +6,11 @@ var messageSchema = new Schema(
   {
     user: String,
     message: String,
-    channel:String,
+    channel: String,
     tags: [String],
-    time_send:String
+    time_send: String
   }, {
-      timestamps: true
+    timestamps: true
   }
 );
 
