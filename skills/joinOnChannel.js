@@ -15,7 +15,7 @@ module.exports = function (controller) {
 
                     var tags = response.channel.purpose.value
 
-                    var tagCutter = "tags:"
+                    var tagCutter = "tags: "
                     tags = tags.substring(tags.indexOf(tagCutter) + tagCutter.length)
 
                     tags = tags.split(", ")
