@@ -125,6 +125,8 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
   require("./skills/" + file)(controller);
 });
 
+console.log(controller.bot_options)
+
 
 
 function usage_tip() {
