@@ -4,7 +4,7 @@ module.exports = function (controller, channel) {
 
     let msgMap = new Map()
 
-    controller.hears(tags, channel.id,
+    controller.hears(channel.tags, channel.channelId,
         function (bot, message) {
             let data = {}
             console.log(message)
@@ -17,8 +17,8 @@ module.exports = function (controller, channel) {
                         user: data.user,
                         message: message.text,
                         channel: data.channel,
-                        tags: ["Test", "not real"],
-                        time_send: "12 oclock"
+                        tags: [message.match[0]],
+                        time_send: message.event_time
                     };
 
                     msgMap.set(message.text, msg)
@@ -47,8 +47,6 @@ module.exports = function (controller, channel) {
                             }
                         ]
                     });
-
-
 
                 })
         });

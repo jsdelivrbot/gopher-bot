@@ -108,7 +108,9 @@ webserver.get('/', function (req, res) {
 console.log("fetch db here")
 
 Channel.find().then(channels=>{
-  console.log(channels)
+  channels.forEach(channel => {
+    require(__dirname + '/components/listener_setup.js')(controller, channel)
+  })
 })
 
 // Set up a simple storage backend for keeping a record of customers
