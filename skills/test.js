@@ -2,7 +2,6 @@ var Message = require('../models/messageModel');
 
 module.exports = function (controller) {
 
-
     let msgMap = new Map()
 
     controller.hears(['hello', 'hi', 'greetings'],
@@ -18,8 +17,6 @@ module.exports = function (controller) {
                     data.user = response.user.real_name
                     console.log(response)
 
-                    // bot.reply(message, `Text: ${message.text}, channel ${data.channel},
-                    //  user ${data.user}`)
                     let msg = {
                         user: data.user,
                         message: message.text,
@@ -27,14 +24,6 @@ module.exports = function (controller) {
                         tags: ["Test", "not real"],
                         time_send: "12 oclock"
                     };
-
-
-
-                    //     msg.save(function (err) {
-                    //         if (err) {console.log(err)} 
-                    //         console.log("pass")
-                    //     });
-
 
                     msgMap.set(message.text, msg)
 
