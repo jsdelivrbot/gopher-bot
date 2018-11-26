@@ -6,7 +6,7 @@ module.exports = function (controller) {
             channel: message.event.item.channel,
             timestamp: message.event.item.timestamp
         }, function(error, response){
-            log(response)
+            console.log(response)
         }
         )
     })
