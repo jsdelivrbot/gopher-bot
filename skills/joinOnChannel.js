@@ -17,7 +17,7 @@ module.exports = function (controller) {
 
                     tags = tags.substring(str.indexOf("tags:") + 1)
 
-                    tags = response.channel.purpose.value.split(" ")
+                    tags = response.channel.purpose.value.split(", ")
 
                     console.log(response.channel.purpose.value)
                     console.log('WTF' + tags)
