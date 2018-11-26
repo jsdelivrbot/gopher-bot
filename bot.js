@@ -59,6 +59,7 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
 var Botkit = require('botkit');
 var debug = require('debug')('botkit:main');
+var Channel = require('./models/channelInfoModel');
 
 var mongoose = require('mongoose');
 var mongoDB = process.env.MONGO_URI;
@@ -102,6 +103,10 @@ webserver.get('/', function (req, res) {
     glitch_domain: process.env.PROJECT_DOMAIN,
     layout: 'layouts/default'
   });
+})
+
+Channel.find().forEach(function(channel){
+  console.log(channel)
 })
 
 // Set up a simple storage backend for keeping a record of customers
