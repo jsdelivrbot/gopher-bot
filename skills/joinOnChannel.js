@@ -12,11 +12,13 @@ module.exports = function (controller) {
                 console.log(response.channel.name)
                 console.log(response.channel.purpose)
 
+                var tags = response.channel.purpose.split(" ")
+
                 var channelInfo = new ChannelInfo(
                     {
                         channelId: response.channel.id,
-                        channelName: response.channel.name,
-                        tags: [response.channel.purpose.value]
+                        chanconsolenelName: response.channel.name,
+                        tags: [tags]
                     });
                     channelInfo.save(function (err) {
                         if (err) {console.log(err)} 

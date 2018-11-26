@@ -13,7 +13,7 @@ module.exports = function(controller) {
 
              bot.api.users.info({user: message.user}, function(error, response){
                 data.user = response.user.real_name
-                console.log(response)
+                //console.log(response)
 
                 bot.reply(message, `Text: ${message.text}, channel ${data.channel},
                  user ${data.user}`)
