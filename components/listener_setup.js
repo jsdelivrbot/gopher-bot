@@ -16,7 +16,7 @@ module.exports = function (controller, channel) {
                     let msg = {
                         user: data.user,
                         message: message.text,
-                        channel: data.channel,
+                        channel: channel.channelName,
                         tags: [message.match[0]],
                         time_send: message.event_time
                     };
