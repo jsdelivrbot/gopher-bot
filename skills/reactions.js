@@ -11,8 +11,11 @@ module.exports = function (controller) {
             timestamp: message.event.item.ts
         }, function(error, response){
             console.log('api req here')
-            console.log(error)
             console.log(response)
+            response.message.reactions.array.forEach(element => {
+                console.log(element)
+            });
+
         }
         )
     })
