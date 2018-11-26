@@ -12,7 +12,7 @@ module.exports = function (controller) {
         }, function(error, response){
             console.log('api req here')
             console.log(response)
-            response.message.reactions.array.forEach(element => {
+            response.message.reactions.forEach(element => {
                 console.log(element)
             });
 
