@@ -105,8 +105,10 @@ webserver.get('/', function (req, res) {
   });
 })
 
-Channel.find().forEach(function(channel){
-  console.log(channel)
+console.log("fetch db here")
+
+Channel.find().then(channels=>{
+  console.log(channels)
 })
 
 // Set up a simple storage backend for keeping a record of customers
