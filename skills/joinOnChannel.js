@@ -12,7 +12,7 @@ module.exports = function (controller) {
                 splitString()
                 
                 function splitString() {
-                    
+
                 var tags = response.channel.purpose.toString().split(" ")
                 console.log('WTF' + tags)
                 
@@ -20,7 +20,7 @@ module.exports = function (controller) {
                     {
                         channelId: response.channel.id,
                         chanconsolenelName: response.channel.name,
-                        tags: [tags]
+                        tags: tags
                     });
                     channelInfo.save(function (err) {
                         if (err) {console.log(err)} 
