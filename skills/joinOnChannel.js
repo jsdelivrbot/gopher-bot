@@ -8,11 +8,10 @@ module.exports = function (controller) {
             let data = {}
             console.log(message)
             bot.api.channels.info({channel: message.channel}, function (error, response) {
-                console.log(response.channel.id)
-                console.log(response.channel.name)
-                console.log(response.channel.purpose)
+                
 
                 var tags = response.channel.purpose.split(" ")
+                console.log(tags)
 
                 var channelInfo = new ChannelInfo(
                     {
