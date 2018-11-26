@@ -9,9 +9,11 @@ module.exports = function (controller) {
             console.log(message)
             bot.api.channels.info({channel: message.channel}, function (error, response) {
                 
-
+                function splitString() {
                 var tags = response.channel.purpose.split(" ")
                 console.log(tags)
+
+                }
 
                 var channelInfo = new ChannelInfo(
                     {
