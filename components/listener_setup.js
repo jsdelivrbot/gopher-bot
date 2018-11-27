@@ -54,7 +54,7 @@ module.exports = function (controller, channel) {
 
     controller.on('interactive_message_callback', function (bot, message) {
 
-        console.log(`Message from interactive ${message}`)
+        console.log(message)
 
         if (message.actions[0].name === 'yes') {
             console.log(msgMap.get(message.callback_id))
