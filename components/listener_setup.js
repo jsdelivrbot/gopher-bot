@@ -56,6 +56,7 @@ module.exports = function (controller, channel) {
         console.log(message)
 
         if (message.actions[0].name === 'yes') {
+            console.log(msgMap.get(message.callback_id))
             let msg = new Message(msgMap.get(message.callback_id))
             msg.save((function (err) {
                 if (err) { console.log(err) }
