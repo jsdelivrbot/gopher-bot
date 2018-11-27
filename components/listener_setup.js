@@ -22,6 +22,7 @@ module.exports = function (controller, channel) {
                     console.log(`msg: ${msg}`)
 
                     msgMap.set(message.event_time, msg)
+                    console.log(msgmap.get(message.event_time))
 
                     bot.reply(message, {
                         attachments: [
