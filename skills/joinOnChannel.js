@@ -30,11 +30,13 @@ module.exports = function (controller) {
                             tags: tags
                         });
 
-                    require('../components/listener_setup.js')(controller, channelInfo)
 
                     channelInfo.save(function (err) {
                         if (err) { console.log(err) }
-                        console.log("channel info saved")
+                        else {
+                            require('../components/listener_setup.js')(controller, channelInfo)
+                            console.log("channel info saved")
+                        }
                     });
                 }
 
