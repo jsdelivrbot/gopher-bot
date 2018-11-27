@@ -35,7 +35,15 @@ module.exports = function (controller) {
                         channel: message.team,
                         tags: ["Reacted to"],
                         time_send: message.event_ts,
+                        message: response.message.text
                     }
+                    dbmsg = new Message(cont)
+                    dbmsg.save(function (err) {
+                        if (err) { console.log(err) }
+                        else {
+                            console.log("message saved")
+                        }
+                    });
                 })
             }
         }
