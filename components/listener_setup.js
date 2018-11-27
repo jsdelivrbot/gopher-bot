@@ -21,14 +21,14 @@ module.exports = function (controller, channel) {
                         time_send: message.event_time
                     };
 
-                    msgMap.set(message.text, msg)
+                    msgMap.set(message.event_time, msg)
 
                     bot.reply(message, {
                         attachments: [
                             {
-                                title: 'Would you like to push this as an event?',
-                                text: `Text: ${message.text}, channel ${data.channel}, user ${data.user}`,
-                                callback_id: message.text,
+                                title: `Your message contained the ${message.match[0]} keyword, publish it on gopher?`,
+                                text: `Message: ${message.text}`,
+                                callback_id: message.event_time,
                                 attachment_type: 'default',
                                 actions: [
                                     {
