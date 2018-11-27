@@ -21,7 +21,7 @@ module.exports = function (controller, channel) {
 
                     console.log(`msg: ${msg}`)
 
-                    msgMap.set(message.event_time, msg)
+                    msgMap.set(message.event_time.toString(), msg)
                     console.log(msgMap.get(message.event_time))
 
                     bot.reply(message, {
