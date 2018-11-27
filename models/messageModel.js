@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var messageSchema = new Schema(
   {
     user: String,
-    message: String,
+    message: {type: String, unique: true},
     channel: String,
     tags: [String],
     time_send: String,
