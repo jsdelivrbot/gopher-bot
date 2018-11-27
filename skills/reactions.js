@@ -19,17 +19,8 @@ module.exports = function (controller) {
                 console.log(element)
                 reactions_count += element.count
             });
+            
             if (reactions_count >4){
-                bot.api.channels.history({
-                    channel: message.item.channel,
-                    count: 1,
-                    inclusive: true,
-                    latest: message.item.ts
-                }, function(error, response){
-                    if (error){
-                        console.log(error)
-                    }
-                    console.log(response)
                     let cont = {
                         user: message.user,
                         channel: message.team,
@@ -43,8 +34,7 @@ module.exports = function (controller) {
                         else {
                             console.log("message saved")
                         }
-                    });
-                })
+                    })
             }
         }
         )
