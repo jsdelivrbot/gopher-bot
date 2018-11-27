@@ -19,7 +19,7 @@ module.exports = function (controller, channel) {
                         time_send: message.event_time.toString()
                     };
 
-                    console.log(`msg: ${msg}`)
+                    console.log(msg)
 
                     msgMap.set(message.event_time.toString(), msg)
                     console.log(msgMap.get(message.event_time))
@@ -52,7 +52,7 @@ module.exports = function (controller, channel) {
                 })
         });
 
-    controller.on('interactive_message_callback', function (bot, message) {
+    controller.on(`interactive_message_callback_${channel.channelId}`, function (bot, message) {
 
         console.log(message)
 
