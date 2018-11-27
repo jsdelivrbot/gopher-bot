@@ -8,10 +8,8 @@ module.exports = function (controller, channel) {
         function (bot, message) {
             let data = {}
 
-            console.log(message)
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name
-                    console.log(response)
 
                     let msg = {
                         user: data.user,
@@ -20,6 +18,8 @@ module.exports = function (controller, channel) {
                         tags: [message.match[0]],
                         time_send: message.event_time
                     };
+
+                    console.log(`msg: ${msg}`)
 
                     msgMap.set(message.event_time, msg)
 
@@ -53,7 +53,7 @@ module.exports = function (controller, channel) {
 
     controller.on('interactive_message_callback', function (bot, message) {
 
-        console.log(message)
+        console.log(`Message from interactive ${message}`)
 
         if (message.actions[0].name === 'yes') {
             console.log(msgMap.get(message.callback_id))
