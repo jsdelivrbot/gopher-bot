@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var messageSchema = new Schema(
   {
-    channelId: String,
+    channelId: {type: String, index: true, unique: true},
     channelName: String,
     tags:[String]
   }, {
