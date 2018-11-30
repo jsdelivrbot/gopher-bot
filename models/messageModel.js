@@ -5,10 +5,11 @@ var Schema = mongoose.Schema;
 var messageSchema = new Schema(
   {
     user: String,
-    message: String,
+    message: {type: String, index: true, unique: true},
     channel: String,
     tags: [String],
-    time_send: String
+    time_send: String,
+    link: String
   }, {
     timestamps: true
   }

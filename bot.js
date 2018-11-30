@@ -59,6 +59,7 @@ if (!process.env.clientId || !process.env.clientSecret) {
 
 var Botkit = require('botkit');
 var debug = require('debug')('botkit:main');
+var Channel = require('./models/channelInfoModel');
 
 var mongoose = require('mongoose');
 var mongoDB = process.env.MONGO_URI;
@@ -104,6 +105,14 @@ webserver.get('/', function (req, res) {
   });
 })
 
+console.log("fetch db here")
+
+Channel.find().then(channels=>{
+  channels.forEach(channel => {
+    require(__dirname + '/components/listener_setup.js')(controller, channel)
+  })
+})
+
 // Set up a simple storage backend for keeping a record of customers
 // who sign up for the app via the oauth
 require(__dirname + '/components/user_registration.js')(controller);
@@ -115,6 +124,8 @@ var normalizedPath = require("path").join(__dirname, "skills");
 require("fs").readdirSync(normalizedPath).forEach(function (file) {
   require("./skills/" + file)(controller);
 });
+
+console.log(controller.bot_options)
 
 
 
