@@ -26,7 +26,7 @@ module.exports = function (controller) {
                                 message: response.message.text,
                                 channel: res.channelName,
                                 tags: ['Popular thread'],
-                                time_send: response.message.thread_ts.replace('\.',''),
+                                time_send: Math.trunc(response.message.thread_ts),
                                 link: response.message.permalink
                             }
                             const msg2 = new Message(msg)
