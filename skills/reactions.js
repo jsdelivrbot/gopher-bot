@@ -29,12 +29,13 @@ module.exports = function (controller) {
                         message: response.message.text
                     }
                     dbmsg = new Message(cont)
-                    dbmsg.save(function (err) {
-                        if (err) { console.log(err) }
-                        else {
-                            console.log("message saved")
-                        }
-                    })
+                    console.log(dbmsg);
+                    // dbmsg.save(function (err) {
+                    //     if (err) { console.log(err) }
+                    //     else {
+                    //         console.log("message saved")
+                    //     }
+                    // })
             }
         }
         )

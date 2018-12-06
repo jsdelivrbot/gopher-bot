@@ -59,10 +59,11 @@ module.exports = function (controller, channel) {
         if (message.actions[0].name === 'yes') {
             console.log(msgMap.get(message.callback_id))
             let msg = new Message(msgMap.get(message.callback_id))
-            msg.save((function (err) {
-                if (err) { console.log(err) }
-                console.log("pass")
-            }));
+            console.log(msg);
+            // msg.save((function (err) {
+            //     if (err) { console.log(err) }
+            //     console.log("pass")
+            // }));
             bot.replyInteractive(message, {
                 title: 'Sent',
                 text: 'See it on the website'
