@@ -10,7 +10,7 @@ module.exports = function (controller, channel) {
 
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name
-
+                    console.log(message)
                     let msg = {
                         user: data.user,
                         message: message.text,
