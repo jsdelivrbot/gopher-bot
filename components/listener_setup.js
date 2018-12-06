@@ -7,7 +7,8 @@ module.exports = function (controller, channel) {
     controller.hears(channel.tags, channel.channelId,
         function (bot, message) {
             console.log(message)
-            let data = {}
+            if (!message.event.thread_ts) {
+                let data = {}
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name
 
@@ -17,7 +18,7 @@ module.exports = function (controller, channel) {
                         channel: channel.channelName,
                         tags: [message.match[0]],
                         time_send: message.event_time.toString(),
-                        link: `https://letstesthere.slack.com/archives/${channel.channelId}/p${message.ts.replace('\.','')}`
+                        link: `https://letstesthere.slack.com/archives/${channel.channelId}/p${message.ts.replace('\.', '')}`
                     };
 
 
@@ -50,6 +51,9 @@ module.exports = function (controller, channel) {
                     });
 
                 })
+            } else {
+                console.log('thread')
+            }
         });
 
     controller.on(`interactive_message_callback_${channel.channelId}`, function (bot, message) {
