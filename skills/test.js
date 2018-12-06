@@ -15,7 +15,7 @@ module.exports = function (controller) {
             }, function (error, response) {
 
                 console.log(response)
-                if (response.reply_count > 4) {
+                if (response.message.reply_count > 4) {
 
                     bot.api.users.info({ user: response.user }, function (error, response2) {
 
