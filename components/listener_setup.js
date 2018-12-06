@@ -24,10 +24,10 @@ module.exports = function (controller, channel) {
                     msgMap.set(message.event_time.toString(), msg)
                     console.log(msgMap.get(message.event_time))
 
-                    bot.reply(message, {
+                    bot.sendEphemeral(message, {
                         attachments: [
                             {
-                                title: `Your message contained the ${message.match[0]} keyword, publish it on gopher?`,
+                                title: `Your message contained the "${message.match[0]}" keyword, publish it on gopher?`,
                                 text: `Message: ${message.text}`,
                                 callback_id: message.event_time,
                                 attachment_type: 'default',
