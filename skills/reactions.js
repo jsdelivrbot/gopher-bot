@@ -29,7 +29,7 @@ module.exports = function (controller) {
                             user: response2.user.real_name,
                             channel: res.channelName,
                             tags: ["Reactive"],
-                            time_send: Math.trunc(message.item.ts).toString,
+                            time_send: Math.trunc(message.item.ts).toString(),
                             message: response.message.text
                         }
                         dbmsg = new Message(cont)
