@@ -7,7 +7,7 @@ module.exports = function (controller, channel) {
     controller.hears(channel.tags, channel.channelId,
         function (bot, message) {
             console.log(message)
-            if (!message.event.thread_ts) {
+            if (!message.thread_ts) {
                 let data = {}
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name
@@ -53,8 +53,14 @@ module.exports = function (controller, channel) {
                 })
             } else {
                 console.log('thread')
+                bot.api.reactions.get({
+                    channel: message.channel,
+                    timestamp: message.thread_ts
+                }, function (error, response) {
+                    console.log(response)
+                })
             }
-        });
+        })
 
     controller.on(`interactive_message_callback_${channel.channelId}`, function (bot, message) {
 
