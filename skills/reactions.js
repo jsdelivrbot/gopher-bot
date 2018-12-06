@@ -24,6 +24,8 @@ module.exports = function (controller) {
                     console.log('second response')
                     console.log(response2);
                     ChannelInfo.findOne({channelId: message.item.channel}, (err, res)=>{
+
+                        console.log(message.item.ts)
                         
                         let cont = {
                             user: response2.user.real_name,
@@ -31,7 +33,7 @@ module.exports = function (controller) {
                             tags: ["Reactive"],
                             time_send: Math.trunc(message.item.ts).toString(),
                             message: response.message.text,
-                            link: `letstesthere.slack.com/archives/${message.item.channel}/p${message.item.ts.replace('.','')}`
+                            link: `letstesthere.slack.com/archives/${message.item.channel}/p${message.item.ts.replace('\.','')}`
                         }
                         dbmsg = new Message(cont)
                         console.log(dbmsg);
