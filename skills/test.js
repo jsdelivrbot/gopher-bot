@@ -14,7 +14,8 @@ module.exports = function (controller) {
                 timestamp: message.thread_ts
             }, function (error, response) {
 
-                console.log(`GET REACTIONS ${response}`)
+                console.log(`GET REACTIONS`)
+                console.log(response)
                 if (response.message.reply_count > 4) {
 
                     bot.api.users.info({ user: response.message.user }, function (error, response2) {
@@ -30,6 +31,10 @@ module.exports = function (controller) {
                             }
                             const msg2 = new Message(msg)
                             console.log(msg2)
+                            msg2.save((function (err) {
+                                if (err) { console.log(err) }
+                                console.log("pass")
+                            }));
                         })
                     })
                 }
