@@ -14,13 +14,12 @@ module.exports = function (controller) {
                 timestamp: message.thread_ts
             }, function (error, response) {
 
-                console.log(response)
+                console.log(`GET REACTIONS ${response}`)
                 if (response.message.reply_count > 4) {
 
-                    bot.api.users.info({ user: response.user }, function (error, response2) {
-
+                    bot.api.users.info({ user: response.message.user }, function (error, response2) {
+                        console.log(`USER INFO ${response2}`)
                         ChannelInfo.findOne({channelId: response.channel},(err, res)=>{
-                            res.channelName
                             let msg = {
                                 user:response2.user.real_name,
                                 message: response.message.text,
