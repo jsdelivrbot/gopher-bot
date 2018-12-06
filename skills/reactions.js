@@ -2,7 +2,7 @@ var Message = require('../models/messageModel');
 
 module.exports = function (controller) {
     controller.on('reaction_added', function (bot, message) {
-        
+
         console.log('reaction added?')
         console.log(message)
 
@@ -21,7 +21,7 @@ module.exports = function (controller) {
             if (reactions_count > 4) {
                 bot.api.users.info({ user: response.message.user }, function (error, response2) {
                     console.log('second response')
-                    console.log(respone2);
+                    console.log(response2);
                     let cont = {
                         user: message.item_user,
                         channel: message.team,
