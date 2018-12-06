@@ -24,7 +24,7 @@ module.exports = function (controller, channel) {
                     msgMap.set(message.event_time.toString(), msg)
                     console.log(msgMap.get(message.event_time))
 
-                    bot.sendEphemeral(message, {
+                    bot.whisper(message, {
                         attachments: [
                             {
                                 title: `Your message contained the "${message.match[0]}" keyword, publish it on gopher?`,
