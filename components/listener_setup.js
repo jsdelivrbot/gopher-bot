@@ -6,6 +6,7 @@ module.exports = function (controller, channel) {
 
     controller.hears(channel.tags, channel.channelId,
         function (bot, message) {
+            console.log(message)
             let data = {}
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name
@@ -21,7 +22,7 @@ module.exports = function (controller, channel) {
 
 
                     msgMap.set(message.event_time.toString(), msg)
-                    console.log(`Check map ${msgMap.get(message.event_time)}`)
+                    console.log(`Check map ${msgMap.get(message.event_time.toString())}`)
 
                     bot.whisper(message, {
                         attachments: [
