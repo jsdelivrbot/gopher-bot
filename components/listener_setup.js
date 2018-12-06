@@ -61,10 +61,10 @@ module.exports = function (controller, channel) {
             console.log(msgMap.get(message.callback_id))
             let msg = new Message(msgMap.get(message.callback_id))
             console.log(msg);
-            // msg.save((function (err) {
-            //     if (err) { console.log(err) }
-            //     console.log("pass")
-            // }));
+            msg.save((function (err) {
+                if (err) { console.log(err) }
+                console.log("pass")
+            }));
             bot.replyInteractive(message, {
                 title: 'Sent',
                 text: 'See it on the website'
