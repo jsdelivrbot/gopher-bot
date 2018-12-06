@@ -17,7 +17,7 @@ module.exports = function (controller, channel) {
                         channel: channel.channelName,
                         tags: [message.match[0]],
                         time_send: message.event_time.toString(),
-                        link: `letstesthere.slack.com/archives/${channel.channelId}/p${message.event_time.toString()}`
+                        link: `https://letstesthere.slack.com/archives/${channel.channelId}/p${message.event_time.toString()}`
                     };
 
                     console.log(msg)

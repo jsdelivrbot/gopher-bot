@@ -33,7 +33,7 @@ module.exports = function (controller) {
                             tags: ["Reactive"],
                             time_send: Math.trunc(message.item.ts).toString(),
                             message: response.message.text,
-                            link: `letstesthere.slack.com/archives/${message.item.channel}/p${message.item.ts.replace('\.','')}`
+                            link: response.message.permalink
                         }
                         dbmsg = new Message(cont)
                         console.log(dbmsg);
