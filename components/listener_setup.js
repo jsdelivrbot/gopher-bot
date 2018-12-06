@@ -7,10 +7,9 @@ module.exports = function (controller, channel) {
     controller.hears(channel.tags, channel.channelId,
         function (bot, message) {
             let data = {}
-
                 bot.api.users.info({ user: message.user }, function (error, response) {
                     data.user = response.user.real_name
-                    console.log(message)
+
                     let msg = {
                         user: data.user,
                         message: message.text,
@@ -20,10 +19,9 @@ module.exports = function (controller, channel) {
                         link: `https://letstesthere.slack.com/archives/${channel.channelId}/p${message.ts.replace('\.','')}`
                     };
 
-                    console.log(msg)
 
                     msgMap.set(message.event_time.toString(), msg)
-                    console.log(msgMap.get(message.event_time))
+                    console.log(`Check map ${msgMap.get(message.event_time)}`)
 
                     bot.whisper(message, {
                         attachments: [
